@@ -1,0 +1,108 @@
+/* Second.css - Modern Glassmorphism Design */
+
+/* 1. Global Font & Reset */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* 2. Background Image (Dark Theme) */
+body {
+    height: 100vh;
+    width: 100%;
+    /* Dark Background */
+    background-image: url('https://wallpapercat.com/w/full/9/5/a/945731-3840x2160-desktop-4k-matte-black-wallpaper-image.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 3. Glass Container */
+.glass-form {
+    background: rgba(255, 255, 255, 0.05); /* Transparent */
+    padding: 40px;
+    width: 400px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px); /* Blur Effect */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+/* Title */
+.glass-form h2 {
+    color: #ffffff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(34, 197, 94, 0.8);
+    text-transform: uppercase;
+}
+
+/* 4. Form Fields Styling */
+.glass-form p { text-align: left; margin-bottom: 15px; }
+
+/* Labels */
+.glass-form label {
+    display: block;
+    color: #ccc;
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+/* Input Fields */
+.glass-form input[type="text"],
+.glass-form input[type="email"],
+.glass-form input[type="password"],
+.glass-form input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* Focus Effect */
+.glass-form input:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #22c55e;
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+}
+
+/* 5. Button */
+#btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background: #22c55e;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+}
+
+#btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.8);
+    background: #16a34a;
+}
+
+/* 6. Footer Links */
+.footer-link { margin-top: 20px; color: #bbb; font-size: 13px; }
+.footer-link a { color: #22c55e; text-decoration: none; font-weight: bold; }

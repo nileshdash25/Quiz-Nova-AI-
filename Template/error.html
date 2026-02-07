@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - Invalid Entry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 1. Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+        /* 2. Background - Same as Register/Home for consistency */
+        body {
+            height: 100vh;
+            width: 100%;
+            /* Wahi Deep Purple Gradient */
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* 3. The Error Glass Card */
+        .error-card {
+            background: rgba(0, 0, 0, 0.6); /* Dark Glass */
+            padding: 40px;
+            width: 90%;
+            max-width: 450px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            
+            /* Red Border for Danger feel */
+            border: 1px solid rgba(255, 68, 68, 0.3);
+            box-shadow: 0 15px 40px rgba(0,0,0, 0.6);
+            
+            text-align: center;
+            
+            /* MAGIC: Page load hote hi box hilega */
+            animation: shake 0.5s ease-in-out;
+        }
+
+        /* 4. Text Styling */
+        .icon {
+            font-size: 50px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        h1 {
+            color: #ff4444; /* Red Text */
+            font-size: 2rem;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(255, 68, 68, 0.4);
+        }
+
+        h2 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        /* Dynamic Message Box */
+        .msg-box {
+            background: rgba(255, 68, 68, 0.1);
+            border: 1px solid rgba(255, 68, 68, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            color: #ffd1d1;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        /* 5. Buttons Container */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px; /* Buttons ke beech gap */
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        /* Login Button (Green) */
+        .btn-retry {
+            background: #22c55e;
+            color: white;
+            box-shadow: 0 5px 15px rgba(34, 197, 94, 0.3);
+        }
+        .btn-retry:hover {
+            background: #16a34a;
+            transform: translateY(-2px);
+        }
+
+        /* Register Button (Transparent) */
+        .btn-register {
+            background: transparent;
+            border: 2px solid #ff4444;
+            color: #ff4444;
+        }
+        .btn-register:hover {
+            background: #ff4444;
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 68, 68, 0.3);
+        }
+
+        /* 6. Shake Animation Logic */
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+            75% { transform: translateX(-10px); }
+            100% { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="error-card">
+        <div class="icon">⚠️</div>
+        <h1>Invalid Entry</h1>
+        <h2>Something went wrong!</h2>
+        
+        <div class="msg-box">
+            {{ msg }}
+        </div>
+
+        <div class="btn-group">
+            <a href="/Test/home/" class="btn btn-retry">Try Again</a>
+            <a href="/Test/LoginForm/" class="btn btn-register">Register</a>
+        </div>
+    </div>
+
+</body>
+</html>

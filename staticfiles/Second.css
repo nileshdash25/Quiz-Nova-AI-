@@ -1,0 +1,71 @@
+form p input{
+    border-radius:2%;
+    height: 2rem;
+    width:20vw;
+    background-color: white;
+    color: black;
+    border: none;
+    margin-left: 5%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+form p input ::placeholder{
+    color: grey;
+}
+form p label{
+    margin-right:5%;
+}
+form{
+    height:28rem;
+    width:80vw;
+    margin-left:10%;
+    margin-top:8%;
+    background-color:#CCD6A6;
+    border-radius: 10%;
+    opacity: 80%;
+    padding-top:3%;
+}
+form p{
+    color:black;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-transform: uppercase;
+}
+#btn{
+    background-color: green;
+    height: 2.5rem;
+    width:29%;
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    border:none;
+    margin-top: 2%;
+    border-radius: 5%;
+}
+#btn:hover{
+    color:green;
+    opacity: 80%;
+    color:whitesmoke;
+}
+body{
+    background-color: antiquewhite;
+    text-align: center;
+    background-image: url('https://img.freepik.com/free-photo/autumn-season-leafs-plant-scene-generative-ai_188544-7971.jpg?w=740&t=st=1692374759~exp=1692375359~hmac=e326a044657dd4590e0fec71248026927dc9af57a6e756c70226746f5a7cded8');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#name{
+    margin-left:5%;
+}
+#age{
+    margin-left:6.5%;
+}
+#adrs{
+    margin-left:2.8%;
+}
+#psd{
+   margin-right: 3.8%;
+}
+#repsd{
+    margin-right:5.9%;
+}
