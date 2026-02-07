@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-skzjpx(5qv8-c=r8x+y5ki%typ$d11$-5tlaz30%yi&fy7&i4=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['nileshdash24.pythonanywhere.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -81,14 +81,11 @@ WSGI_APPLICATION = 'Loginform.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# Purana MySQL wala code hata kar ye daal de:
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'nileshdash24$database8',
-        'USER': 'nileshdash24',               # Your PythonAnywhere username
-        'PASSWORD': 'Nobita@2002',     # The password you set on the DB tab
-        'HOST': 'nileshdash24.mysql.pythonanywhere-services.com',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 

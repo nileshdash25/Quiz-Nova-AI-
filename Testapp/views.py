@@ -5,16 +5,21 @@ from django.core.mail import send_mail
 from .models import StudentInfo
 from Testapp.Form import StudentForm
 # New SDK Import
-from google import genai
+import google.generativeai as genai
 from django.views.decorators.csrf import csrf_exempt
-import mysql.connector as sql
+#import mysql.connector as sql
 
 # --- 1. CLIENT SETUP (FIXED VERSION) ---
 # 'v1' hata kar 'v1beta' kiya kyunki Gemini 2.5/2.0 wahin available hain
-client = genai.Client(
-    api_key="AIzaSyCWP-RqeP8KGTH6LOV4sbSLmevrT1junQw",
-    http_options={"api_version": "v1beta"} 
-)
+# Configure kar (Client banane ki zaroorat nahi hoti)
+genai.configure(api_key="AIzaSyCWP-RqeP8KGTH6LOV4sbSLmevrT1junQw")
+
+# Model select kar (Gemini 2.0 ya 1.5 jo chahiye)
+model = genai.GenerativeModel('gemini-2.5-flash')
+#client = genai.Client(
+ #   api_key="AIzaSyCWP-RqeP8KGTH6LOV4sbSLmevrT1junQw",
+ #   http_options={"api_version": "v1beta"} 
+#)
 
 # --- 2. LOGIN & DATABASE (TERA PURANA LOGIC) ---
 em = ''
@@ -94,37 +99,26 @@ def logout_action(request):
 def Home(req): return render(req, 'Home.html')
 def ThankYou_Page(req): return render(req, 'thankyou.html')
 
-# --- 3. CHATBOT (MODEL ROTATOR + v1beta) ---
+
+# --- 3. CHATBOT (FIXED VERSION) ---
 @csrf_exempt
 def chatbot_response(request):
+    # Message nikalo (GET ya POST se)
     user_msg = request.GET.get("msg") or request.POST.get("msg")
-    if not user_msg: return JsonResponse({"reply": "Kuch toh pucho! 🌸"})
-
-    # Tere account mein jo models available hain (list ke hisaab se)
-    # 2.0-flash sabse stable hai, 2.5 naya hai.
-    models_to_try = [
-        "gemini-2.0-flash", 
-        "gemini-2.5-flash",
-        "gemini-flash-latest"
-    ]
-
-    last_error = ""
-
-    for model_name in models_to_try:
-        try:
-            response = client.models.generate_content(
-                model=model_name,
-                contents=user_msg
-            )
-            # Agar reply aaya toh yahi se bhej do
-            return JsonResponse({"reply": response.text})
-        except Exception as e:
-            last_error = str(e)
-            continue # Agla model try karo
-
-    # Agar saare fail ho gaye
-    print(f"Chatbot Failed: {last_error}")
-    if "429" in last_error:
-        return JsonResponse({"reply": "Quota Full (429). Kal aana! 🌸"})
     
-    return JsonResponse({"reply": "Server Error. Try again later."})
+    # Agar message khali hai
+    if not user_msg: 
+        return JsonResponse({"reply": "Kuch toh pucho! 🌸"})
+
+    try:
+        # Humne upar 'model' define kiya tha (gemini-1.5-flash), usko use karenge
+        # client.models... ki zaroorat nahi hai
+        response = model.generate_content(user_msg)
+        
+        # Jawab bhejo
+        return JsonResponse({"reply": response.text})
+
+    except Exception as e:
+        # Error print karo taaki terminal mein dikhe
+        print(f"Chatbot Error: {e}")
+        return JsonResponse({"reply": "Server Error. Try again later."})
